@@ -105,3 +105,16 @@ In the next stage our result is retrieved from the build stage and placed
 into nginx directory:
 
 `COPY --from=builder /app/build /usr/share/nginx/html`
+
+**.travis.yml** is a config file for Ci/CD as 
+**.gitlab-ci.yml**, 
+**.circleci/config.yml**
+**.github/workflows/github.yml**
+
+If we want to run test `npm run test` in travis ci workflow we need to use 
+extra switches to prevent process from hanging. We want the process to be 
+executed and then to get a result:
+````
+ script:
+  - docker run -e CI=true hazartilirot/react npm run test
+````
