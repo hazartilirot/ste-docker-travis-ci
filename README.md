@@ -118,3 +118,25 @@ executed and then to get a result:
  script:
   - docker run -e CI=true hazartilirot/react npm run test
 ````
+
+# AWS creating an EBS and AIM
+
+Create a new instance of ElasticBeanstalk and fill out all properties in .
+**travis.yml** file. If you haven't yet deployed the project on the server 
+there won't be **bucket_path:** you therefore need to use the name of your 
+EBS instance.
+
+When you're done. Create a new AIM with the following policy:
+**AdministratorAccess-AWSElasticBeanstalk**
+````
+Username: travis-ci
+Access key ID: AKIAQQU67MDSSOED377A
+Secret access key: ooAXtldqugatcfiVMsSNq/jmmdZebbEy74tz4mAp
+Password: v_r]|WqN(cJt}+Q
+````
+
+Go to your project in Travis CI, add new environment variables
+````
+AWS_ACCESS_KEY: AKIAQQU67MDSSOED377A
+AWS_SECRET_KEY: ooAXtldqugatcfiVMsSNq/jmmdZebbEy74tz4mAp
+````
